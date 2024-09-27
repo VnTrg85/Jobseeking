@@ -1,8 +1,5 @@
 package jobseekingbe.api.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,23 +22,18 @@ public class Employee {
     @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    
     @Getter
     @Setter
     private String Bio;
-
     @Getter
     @Setter
     private String[] Skills;
-
     @Getter
     @Setter
     private String Resume;
-
     @Getter
     @Setter
     private String Image;
-
     @OneToOne()
     @JoinColumn(name = "UserId")
     private User userEmployee;

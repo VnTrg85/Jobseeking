@@ -3,9 +3,6 @@ package jobseekingbe.api.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,7 +33,6 @@ public class UserRole {
         this.Name = name;
     }
     @OneToMany(mappedBy = "userRole")
-    @JsonIgnore
     private List<User> users = new ArrayList<User>();
     
 }

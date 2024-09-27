@@ -1,9 +1,6 @@
 package jobseekingbe.api.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,11 +27,10 @@ public class UserJobApplied {
     @ManyToOne
     @JoinColumn(name = "JobStatusId")
     private JobStatus jobStatus;
-
+    
     @ManyToOne
     @JoinColumn(name = "UserId")
     private User User;
-
     @ManyToOne
     @JoinColumn(name = "JobId")
     private Job job;
