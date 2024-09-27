@@ -24,32 +24,42 @@ public class User {
     @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+
     @Getter
     @Setter
     @Column(nullable = false,unique = true)
     private String Name;
+
     @Getter
     @Setter
+    @Column(name = "Email", unique = true)
     private String Email;
+
     @Getter
     @Setter
     private String Phone;
+
     @Getter
     @Setter
     @Column(nullable = false)
     private String Password;
+
     @ManyToOne
     @JoinColumn(name = "RoleId")
     @Getter
     @Setter
     private UserRole userRole;
+    
     @OneToOne(mappedBy = "userEmployee")
     @Getter
     @Setter
+    @JsonIgnore
     private Employee employee;    
+    
     @OneToOne(mappedBy = "userCompany")
     @Getter
     @Setter
+    @JsonIgnore
     private Company company;  
     
 }
