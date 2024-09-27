@@ -1,17 +1,11 @@
 package jobseekingbe.api.entity;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -35,7 +29,7 @@ public class Job {
     
     @Getter
     @Setter
-    private String Description;
+    private String Desc;
     
     @Getter
     @Setter
@@ -45,10 +39,6 @@ public class Job {
     @Setter
     private String Location;
     
-    @Getter
-    @Setter
-    private Date dateCreated;
-
     @ManyToOne
     @JoinColumn(name = "JobTypeId")
     private JobType jobType;
@@ -56,9 +46,5 @@ public class Job {
     @ManyToOne
     @JoinColumn(name = "CompanyId")
     private Company company;
-
-    @OneToMany
-    @JoinColumn(name = "userJobAppliedId")
-    private List<UserJobApplied> userJobApplied = new ArrayList<>();
 
 }
