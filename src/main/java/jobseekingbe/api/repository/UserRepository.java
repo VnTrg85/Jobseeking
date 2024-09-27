@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 import jobseekingbe.api.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
+
 }
