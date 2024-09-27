@@ -3,6 +3,9 @@ package jobseekingbe.api.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,9 +27,12 @@ public class JobType {
     @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+
     @Getter
     @Setter
     private String Name;
+    
     @OneToMany(mappedBy = "jobType")
+    @JsonIgnore
     private List<Job> jobs = new ArrayList<Job>();
 }

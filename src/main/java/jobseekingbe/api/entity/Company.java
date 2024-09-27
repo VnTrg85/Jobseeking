@@ -1,7 +1,14 @@
 package jobseekingbe.api.entity;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,8 +36,7 @@ public class Company {
 
     @Getter
     @Setter
-    private String Desc;
-
+    private String Description;
     @Getter
     @Setter
     private String Website;
@@ -45,7 +51,7 @@ public class Company {
     
     @Getter
     @Setter
-    private int CompanySize;
+    private Integer CompanySize;
     
     @Getter
     @Setter
@@ -54,7 +60,8 @@ public class Company {
     @OneToOne
     @JoinColumn(name ="UserId")
     private User userCompany;
-    
+
     @OneToMany(mappedBy = "company")
-    private List<Job> jobs = new ArrayList<Job>();
+    @JsonIgnore
+    private Collection<Job> jobs;
 }
