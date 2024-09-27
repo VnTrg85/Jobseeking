@@ -1,8 +1,5 @@
 package jobseekingbe.api.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +27,7 @@ public class User {
 
     @Getter
     @Setter
+    @Column(nullable = false,unique = true)
     private String Name;
 
     @Getter
@@ -43,6 +41,7 @@ public class User {
 
     @Getter
     @Setter
+    @Column(nullable = false)
     private String Password;
 
     @ManyToOne
@@ -62,4 +61,5 @@ public class User {
     @Setter
     @JsonIgnore
     private Company company;  
+    
 }

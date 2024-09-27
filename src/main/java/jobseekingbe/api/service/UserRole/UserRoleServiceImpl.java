@@ -1,6 +1,5 @@
 package jobseekingbe.api.service.UserRole;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
