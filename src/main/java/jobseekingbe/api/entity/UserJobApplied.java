@@ -27,10 +27,11 @@ public class UserJobApplied {
     @ManyToOne
     @JoinColumn(name = "JobStatusId")
     private JobStatus jobStatus;
-    
+
     @ManyToOne
     @JoinColumn(name = "UserId")
     private User User;
+
     @ManyToOne
     @JoinColumn(name = "JobId")
     private Job job;
