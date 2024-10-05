@@ -10,7 +10,6 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jobseekingbe.api.builder.JobSearchBuilder;
 import jobseekingbe.api.entity.Job;
-import jobseekingbe.api.model.JobDTO;
 
 @Repository
 public class JobRepositoryCustomImpl implements JobRepositoryCustom {
@@ -47,24 +46,28 @@ public class JobRepositoryCustomImpl implements JobRepositoryCustom {
 	}
 	
 	public static void querySpecial(JobSearchBuilder builder,StringBuilder where ) {
-		Long salaryFrom=Long.parseLong(builder.getSalaryFrom());
-		Long salaryTo=Long.parseLong(builder.getSalaryTo());
-		if(salaryFrom!=null ) {
-			where.append(" AND a.salary>="+salaryFrom+" ");
+//		Long salaryFrom=Long.parseLong(builder.getSalaryFrom());
+//		Long salaryTo=Long.parseLong(builder.getSalaryTo());
+//		if(salaryFrom!=null ) {
+//			where.append(" AND a.salary>="+salaryFrom+" ");
+//		}
+//		if(salaryTo!=null ) {
+//			where.append(" AND a.salary<="+salaryTo+" ");
+//		}
+		if (builder.getSalaryFrom() != null && builder.getSalaryFrom().matches("\\d+")) {
+		    Long salaryFrom = Long.parseLong(builder.getSalaryFrom());
+		    where.append(" AND a.salary >= " + salaryFrom + " ");
 		}
-		if(salaryTo!=null ) {
-			where.append(" AND a.salary<="+salaryTo+" ");
+
+		if (builder.getSalaryTo() != null && builder.getSalaryTo().matches("\\d+")) {
+		    Long salaryTo = Long.parseLong(builder.getSalaryTo());
+		    where.append(" AND a.salary <= " + salaryTo + " ");
 		}
-		
 		String industry=builder.getIndustry();
 		if(industry!=null) {
 			where.append(" AND b.industry LIKE '%"+industry+"%' " );
 		}
-		
-		
 	}
-	
-	
 	
 	@Override
 	public List<Job> findJobs(JobSearchBuilder builder) {

@@ -16,6 +16,7 @@ public class MapUtil {
 			}else {
 				object=object!=""?String.valueOf(object.toString()):null;
 			}
-		}return tclass.cast(object);
+		}
+		return tclass.cast(object);
 	}
 }

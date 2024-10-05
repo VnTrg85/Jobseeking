@@ -17,6 +17,7 @@ public class JobAPI {
 
 	@Autowired
 	private JobService jobService;
+	
 	@GetMapping(value = "/api/job")
 	public List<JobDTO> getJob(@RequestParam Map<String, Object> params){
 		List<JobDTO> jobList= jobService.findJobs(params);
