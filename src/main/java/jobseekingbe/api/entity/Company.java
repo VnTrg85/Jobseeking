@@ -3,6 +3,9 @@ package jobseekingbe.api.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,36 +28,38 @@ public class Company {
     @Getter
     @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Getter
     @Setter
-    private String Desc;
+    @Column(name = "decription", length = 200000000)
+    private String description;
 
     @Getter
     @Setter
-    private String Website;
+    private String website;
     
     @Getter
     @Setter
-    private String Location;
+    private String location;
     
     @Getter
     @Setter
-    private String Logo;
+    private String logo;
     
     @Getter
     @Setter
-    private int CompanySize;
+    private int companySize;
     
     @Getter
     @Setter
-    private String[] Industry;
+    private String[] industry;
     
     @OneToOne
     @JoinColumn(name ="UserId")
     private User userCompany;
     
     @OneToMany(mappedBy = "company")
+    @JsonIgnore
     private List<Job> jobs = new ArrayList<Job>();
 }

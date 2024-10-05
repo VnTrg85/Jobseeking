@@ -29,7 +29,7 @@ public class Job {
     
     @Getter
     @Setter
-    private String Desc;
+    private String Description;
     
     @Getter
     @Setter

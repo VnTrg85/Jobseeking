@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import jobseekingbe.api.entity.UserRole;
 @Repository
 public interface UserRoleRepository extends JpaRepository<UserRole,Long> {
-
+    
 }

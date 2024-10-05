@@ -1,7 +1,6 @@
 package jobseekingbe.api.service.UserRole;
 
 import java.util.List;
-
 import jobseekingbe.api.entity.UserRole;
 
 public interface UserRoleService {

@@ -1,5 +1,7 @@
 package jobseekingbe.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,21 +24,21 @@ public class User {
     @Getter
     @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     @Getter
     @Setter
-    private String Name;
+    private String name;
     @Getter
     @Setter
-    private String Email;
+    private String email;
     @Getter
     @Setter
-    private String Phone;
+    private String phone;
     @Getter
     @Setter
-    private String Password;
+    private String password;
     @ManyToOne
-    @JoinColumn(name = "RoleId")
+    @JoinColumn(name = "role_id")
     @Getter
     @Setter
     private UserRole userRole;
