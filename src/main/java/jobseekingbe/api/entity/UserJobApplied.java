@@ -1,6 +1,8 @@
 package jobseekingbe.api.entity;
 
 
+import java.sql.Date;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,13 +29,18 @@ public class UserJobApplied {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+
+    @Getter
+    @Setter
+    private Date time;
+
     @ManyToOne
     @JoinColumn(name = "JobStatusId")
     private JobStatus jobStatus;
 
     @ManyToOne
     @JoinColumn(name = "UserId")
-    private User User;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "JobId")

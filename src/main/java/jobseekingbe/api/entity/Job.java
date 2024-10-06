@@ -4,12 +4,13 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.java.Log;
 
 @Data
 @Entity
@@ -35,6 +37,8 @@ public class Job {
     
     @Getter
     @Setter
+    @Lob
+    @Column(name = "description", length = 2000000000)
     private String Description;
     
     @Getter
@@ -49,6 +53,14 @@ public class Job {
     @Setter
     private Date dateCreated;
 
+
+    @Getter
+    @Setter
+    private String[] SkillFields;
+
+    @Getter
+    @Setter
+    private String status;
     @ManyToOne
     @JoinColumn(name = "JobTypeId")
     private JobType jobType;
@@ -56,6 +68,7 @@ public class Job {
     @ManyToOne
     @JoinColumn(name = "CompanyId")
     private Company company;
+
 
     @OneToMany
     @JoinColumn(name = "userJobAppliedId")
